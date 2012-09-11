@@ -1,0 +1,11 @@
+#!/bin/bash
+mkdir "$1"-cryo
+cryopng -for -q -zc8-9 -zm7-9 -zs0 -zs1 -zs3 -f0 "$1".png -out "$1"-cryo/"$1"-f0.png ; pngout -force -q -c6 "$1"-cryo/"$1"-f0.png "$1"-cryo/"$1"-none.png &
+cryopng -for -q -zc8-9 -zm7-9 -zs0 -zs1 -zs3 -f1 "$1".png -out "$1"-cryo/"$1"-f1.png ; pngout -force -q -c6 "$1"-cryo/"$1"-f1.png "$1"-cryo/"$1"-sub.png &
+cryopng -for -q -zc8-9 -zm7-9 -zs0 -zs1 -zs3 -f2 "$1".png -out "$1"-cryo/"$1"-f2.png ; pngout -force -q -c6 "$1"-cryo/"$1"-f2.png "$1"-cryo/"$1"-up.png &
+cryopng -for -q -zc8-9 -zm7-9 -zs0 -zs1 -zs3 -f3 "$1".png -out "$1"-cryo/"$1"-f3.png ; pngout -force -q -c6 "$1"-cryo/"$1"-f3.png "$1"-cryo/"$1"-avg.png &
+cryopng -for -q -zc8-9 -zm7-9 -zs0 -zs1 -zs3 -f4 "$1".png -out "$1"-cryo/"$1"-f4.png ; pngout -force -q -c6 "$1"-cryo/"$1"-f4.png "$1"-cryo/"$1"-paeth.png &
+cryopng -for -q -zc8-9 -zm7-9 -zs0 -zs1 -zs3 -f5 "$1".png -out "$1"-cryo/"$1"-f5.png ; pngout -force -q -c6 "$1"-cryo/"$1"-f5.png "$1"-cryo/"$1"-mixed.png &
+pngout -force -q -c6 "$1".png "$1"-cryo/"$1"-nd.png &
+wait
+ls -Sl "$1"-cryo/*.png
